@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+  <title>Frontend Mentor | Recipe page</title>
+  <style>
+    :root {
+      --nutmeg: hsl(14, 45%, 36%);
+      --dark_raspberry: hsl(332, 51%, 32%);
+      --white: hsl(0, 0%, 100%);
+      --rose_white: hsl(330, 100%, 98%);
+      --eggshell: hsl(30, 54%, 90%);
+      --light_grey: hsl(30, 18%, 87%);
+      --wenge_brown: hsl(30, 10%, 34%);
+      --dark_charcoal: hsl(24, 5%, 18%);
+    }
+
+    /* reset css */
+    *,
+    *::before,
+    *::after {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    p,
+    li,
+    a {
+      font-size: 16px;
+    }
+
+    li {
+      line-height: 1.8rem;
+    }
+
+
+    @font-face {
+      font-family: 'young-serif';
+      src: url('./assets/fonts/young-serif/YoungSerif-Regular.ttf');
+    }
+
+    @font-face {
+      font-family: 'outfit';
+      src: url('./assets/fonts/outfit/Outfit-VariableFont_wght.ttf');
+    }
+
+    .article__receipe {
+      font-family: 'young-serif';
+    }
+
+    p,
+    li {
+      font-family: 'outfit';
+      color: var(--wenge_brown);
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 200;
+    }
+
+    /* style receipe */
+    body {
+      display: grid;
+      place-content: center;
+    }
+
+    .main {
+      max-width: 850px;
+    }
+
+    .container__image__item {
+      width: 100%;
+      /* max-width: 600px; */
+    }
+
+    .article__receipe {
+      margin-left: 2rem;
+      margin-right: 2rem;
+      background-color: var(--white);
+    }
+
+    .receipe__header>h1 {
+      font-size: 2.7rem;
+      margin-top: 2.3rem;
+    }
+
+    .receipe__header>p {
+      font-size: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 2.3rem;
+      line-height: 1.7rem;
+    }
+
+
+
+    .receipe__section--highlighted {
+      padding: 1.7rem;
+      background-color: var(--rose_white);
+    }
+
+    .receipe__section--highlighted::after {
+      content: '';
+      border-bottom: none !important;
+    }
+
+    .receipe__section--highlighted>h2 {
+      font-size: 1.6rem !important;
+      color: var(--dark_raspberry) !important;
+      font-family: 'outfit';
+      font-weight: 600;
+      margin-bottom: 1.3rem;
+    }
+
+    .receipe__section--highlighted>ul {
+      padding-left: 1rem;
+    }
+
+    .receipe__section--highlighted>ul>li {
+      padding-left: 1rem;
+      font-size: 1.1rem;
+    }
+
+    .receipe__section {
+      margin-bottom: 2rem;
+      position: relative;
+      padding-bottom: 2rem;
+    }
+
+    .receipe__section::after {
+      content: '';
+      position: absolute;
+      border-bottom: 1.5px var(--eggshell) solid;
+      width: 100%;
+      transform: translateX(-50%);
+      bottom: 0;
+      left: 50%;
+    }
+
+    .receipe__section:last-child::after {
+      border-bottom: none !important;
+    }
+
+
+    .receipe__section>h2 {
+      color: var(--nutmeg);
+      font-size: 1.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .receipe__section>p {
+      margin-bottom: 1rem;
+    }
+
+    .receipe__section>ul {
+      padding-left: 1rem;
+      margin-top: 1.2rem;
+    }
+    .receipe__section>ul>li {
+      font-weight: 400;
+      margin-left: .8rem;
+      padding-left: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 2rem;
+    }
+
+    .receipe__section>ol {
+      padding-left: 1rem;
+      margin-top: 1.2rem;
+    }
+    .receipe__section>ol>li {
+      font-weight: 400;
+      margin-left: .8rem;
+      margin-bottom: .8rem;
+      padding-left: 1.2rem;
+      font-size: 1.1rem;
+      line-height: 2rem;
+    }
+
+
+    .recipe__nutrition-table {
+      border-collapse: collapse;
+      width: 100%;
+      display: flex;
+    }
+
+    .recipe__nutrition-table thead {
+      display: block;
+      flex: 1;
+    }
+
+    .recipe__nutrition-table tbody {
+      display: block;
+      flex: 1;
+    }
+
+    .recipe__nutrition-table th {
+      font-weight: 400;
+      color: var(--dark_charcoal);
+    }
+    .recipe__nutrition-table td {
+      font-weight: 600;
+      color: var(--dark_raspberry);
+    }
+    .recipe__nutrition-table th,
+    .recipe__nutrition-table td {
+      font-family: 'outfit';
+      border-bottom: 1px solid var(--eggshell);
+      padding: 8px;
+      text-align: center;
+      display: block;
+    }
+
+    .recipe__nutrition-table tr {
+      display: flex;
+      flex-direction: column;
+    }
+
+    @media only screen and (min-width: 600px) {
+      .main {
+        margin: 5rem;
+        border-radius: 1rem;
+        display: grid;
+        place-content: center;
+        background-color: var(--white);
+      }
+      body {
+        background-color: var(--eggshell);
+      }
+
+      .receipe__container__image {
+        padding-left: 2rem;
+        padding-right: 2rem;
+        padding-top: 2rem;
+        
+      }
+      .receipe__container__image > img {
+        border-radius: 1rem;
+      }
+
+      .recipe__nutrition-table th,
+      .recipe__nutrition-table td {
+        text-align: start;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+  <main class="main">
+    <figure class="receipe__container__image">
+      <img class="container__image__item" src="./assets/images/image-omelette.jpeg" alt="omelette">
+    </figure>
+    <article class="article__receipe">
+      <header class="receipe__header">
+        <h1>Simple Omelette Recipe</h1>
+        <p>An easy and quick dish, perfect for any meal. This classic omelette combines beaten eggs cooked
+          to perfection, optionally filled with your choice of cheese, vegetables, or meats.</p>
+      </header>
+      <section class="receipe__section receipe__section--highlighted ">
+        <h2>Preparation time</h2>
+        <ul>
+          <li><strong>Total:</strong> Approximately 10 minutes</li>
+          <li><strong>Preparation:</strong> 5 minutes</li>
+          <li><strong>Cooking:</strong> 5 minutes</li>
+        </ul>
+      </section>
+      <section class="receipe__section">
+        <h2>Ingredients</h2>
+        <ul>
+          <li>2-3 large eggs</li>
+          <li>Salt, to taste</li>
+          <li>Pepper, to taste</li>
+          <li>1 tablespoon of butter or oil</li>
+          <li>Optional fillings: cheese, diced vegetables, cooked meats, herbs</li>
+        </ul>
+      </section>
+      <section class="receipe__section">
+        <h2>Instructions</h2>
+        <ol>
+          <li><strong>Beat the eggs:</strong> In a bowl, beat the eggs with a pinch of salt and pepper until they are
+            well mixed.
+            You can add a tablespoon of water or milk for a fluffier texture.</li>
+          <li><strong>Heat the pan:</strong>Place a non-stick frying pan over medium heat and add butter or oil.</li>
+          <li><strong>Cook the omelette:</strong>Once the butter is melted and bubbling, pour in the eggs. Tilt the pan
+            to ensure
+            the eggs evenly coat the surface.</li>
+          <li><strong>Add fillings (optional):</strong>When the eggs begin to set at the edges but are still slightly
+            runny in the
+            middle, sprinkle your chosen fillings over one half of the omelette.</li>
+          <li><strong>Fold and serve:</strong>As the omelette continues to cook, carefully lift one edge and fold it
+            over the
+            fillings. Let it cook for another minute, then slide it onto a plate.</li>
+          <li><strong>Enjoy:</strong>Serve hot, with additional salt and pepper if needed.</li>
+        </ol>
+      </section>
+      <section class="receipe__section">
+        <h2>Nutrition</h2>
+        <p>The table below shows nutritional values per serving without the additional fillings.</p>
+        <table class="recipe__nutrition-table">
+          <thead>
+            <tr>
+              <th>Calories</th>
+              <th>Carbs</th>
+              <th>Protein</th>
+              <th>Fat</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>277kcal</td>
+              <td>0g</td>
+              <td>20g</td>
+              <td>22g</td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+    </article>
+  </main>
+</body>
+
+</html>
